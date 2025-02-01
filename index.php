@@ -6,24 +6,22 @@
 // substr - возвращает часть строки, первое значение - начало, второе значение - длина
 
 echo 'Введите вашу фамилию: ';
-$surname = ucfirst(strtolower(trim(fgets(STDIN))));
+$surname = mb_convert_case(trim(fgets(STDIN)), MB_CASE_TITLE, "UTF-8");
 
 echo 'Введите ваше имя: ';
-$name = ucfirst(strtolower(trim(fgets(STDIN))));
+$name = mb_convert_case(trim(fgets(STDIN)), MB_CASE_TITLE, "UTF-8");
 
 echo 'Введите ваше отчество: ';
-$middleName = ucfirst(strtolower(trim(fgets(STDIN))));
+$middleName = mb_convert_case(trim(fgets(STDIN)), MB_CASE_TITLE, "UTF-8");
 
 $fullName = "$surname $name $middleName";
 
-$fio = strtoupper(substr($surname, 0, 1)) . strtoupper(substr($name, 0, 1)) . mb_strtoupper(mb_substr($middleName, 0, 1));
+$fio = mb_strtoupper(mb_substr($surname, 0, 1)) . mb_strtoupper(mb_substr($name, 0, 1)) . mb_strtoupper(mb_substr($middleName, 0, 1));
 
-$surnameAndInitials  = "$surname" . mb_strtoupper(substr($name, 0, 1)) . mb_strtoupper(mb_substr($middleName, 0, 1));
-
+$surnameAndInitials  = "$surname" . mb_strtoupper(mb_substr($name, 0, 1)) . mb_strtoupper(mb_substr($middleName, 0, 1));
 
 echo "Полное имя: $fullName\n";
 echo "Фамилия и инициалы: $surnameAndInitials\n";
 echo "Аббревиатура: $fio\n";
-
 
 ?>
